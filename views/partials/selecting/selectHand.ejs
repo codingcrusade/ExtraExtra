@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="d-flex col-12 justify-content-center">
+        <%for(var i = 0; i < gameData.players[gameData.activePlayer].hand.length; i++){%>
+            <a class="btn <%if(gameData.selectedFromHand[i]){%>btn-secondary<%}else{%><%}%>"
+                id="hand<%=i%>" name="hand<%=i%>" href="/game/<%=gameData._id%>/selectFromHand/<%=i%>" role="button">
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.players[gameData.spellingPlayer].hand[i]%>.png"alt="">
+            </a>
+        <%}%>
+        <div class="mx-3">
+            <div class=""></div>
+            <div class=""></div>
+            <div class="d-flex row">
+                <a class="<%if(gameData.hasVowel){%>mt-5<%}%> <%if(gameData.players[gameData.activePlayer].isAI){%>disabled<%}%>" id="submitSpelling" name="submitSpelling" href="/game/<%=gameData._id%>/submitHandCards" role="button">
+                    <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625335533/ExtraExtra/Characters/Confirm_gzvsae.png" alt="">
+                </a>
+            </div>
+            <br>
+            <div class="d-flex row">
+                <%if(!gameData.hasVowel){%>
+                    <a id="writersBlock" name="writersBlock" href="/game/<%=gameData._id%>/writersBlock" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625335097/ExtraExtra/Characters/Writer_s_Block_v8qhxg.png" alt="">
+                    </a>
+                <%}%>
+            </div>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+    </div>
+</div>
+<br>
+

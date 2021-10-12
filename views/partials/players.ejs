@@ -1,0 +1,73 @@
+<%if(gameData.inLobby){%>
+    <%for(var i = 0; i < gameData.players.length; i++){%>
+        <div class="player_container row justify-content-center mt-2 mb-2">
+            <div class="player_icon_and_number col-1">
+                <div class="row justify-content-center">
+                    <img src=<%=gameData.players[i].icon%> alt="">
+                    <h6 class="text-center">Player <%=i+1%></h6>
+                </div>
+            </div>
+            <div class="player_name col-5">
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <h1><%=gameData.players[i].name%></h1>
+                    </div>
+                    <a class="btn btn-close <%if(i==0){%>disabled<%}%>" href="/game/<%=gameData._id%>/removePlayer/<%=i+1%>"></a>
+                </div>
+                <div class="human_or_ai mt-2 d-flex justify-content-between">
+                    <form class="mt-1" id="toggleAI<%=i+1%>" action="/game/<%=gameData._id%>/changeController/<%=i+1%>" method="GET">                
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" <%if(i==0){%>disabled<%}%> type="checkbox" id="flexSwitchCheckDefault<%=i+1%>" onchange="document.getElementById('toggleAI<%=i+1%>').submit()" <%if(gameData.players[i].isAI){%>checked<%}%>>
+                            <label class="form-check-label" for="flexSwitchCheckDefault<%=i+1%>"><%if(gameData.players[i].isAI){%>Computer<%}else{%>Human<%}%></label>
+                        </div>
+                    </form>
+                    <%if(gameData.players[i].isAI){%>
+                        <div class="difficulty_if_ai">
+                            <a class="btn btn-sm btn-<%if(gameData.players[i].difficulty == 'Easy'){%><%}else{%>outline-<%}%>secondary" href="/game/<%=gameData._id%>/difficultyEasy/<%=i+1%>">Easy</a>
+                            <a class="btn btn-sm btn-<%if(gameData.players[i].difficulty == 'Medium'){%><%}else{%>outline-<%}%>secondary" href="/game/<%=gameData._id%>/difficultyMedium/<%=i+1%>">Medium</a>
+                            <a class="btn btn-sm btn-<%if(gameData.players[i].difficulty == 'Hard'){%><%}else{%>outline-<%}%>secondary" href="/game/<%=gameData._id%>/difficultyHard/<%=i+1%>">Hard</a>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    <%}%>
+<%}else{%>
+    <div class="player_container row justify-content-center mb-2" style="background-image: url(https://res.cloudinary.com/djcc248bk/image/upload/o_90/v1625210451/ExtraExtra/Characters/Gray_Box_nzt5fk.png); ">
+        <div class="player_icon_and_number col-1">
+            
+        </div>
+        <div class="player_name col-5">
+            <div class="d-flex justify-content-between">
+                <div class="">
+                    <h1>Bank: </h1>
+                </div>
+                <h1 class=""><%=gameData.bank%>&#162;</h1>
+            </div>
+        </div>
+    </div>
+    <%for(var i = 0; i < gameData.players.length; i++){%>
+        <div class="player_container row justify-content-center mt-2 mb-2" style="background-image: url(https://res.cloudinary.com/djcc248bk/image/upload/o_90/v1625210451/ExtraExtra/Characters/Gray_Box_nzt5fk.png); ">
+            <div class="player_icon_and_number col-1">
+                <div class="row justify-content-center mt-1">
+                    <img src="<%=gameData.players[i].icon%>" alt="">
+                </div>
+            </div>
+            <div class="player_name col-5">
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <h1><%=gameData.players[i].name%></h1>
+                    </div>
+                    <h1 class=""><%=gameData.players[i].money%>&#162;</h1>
+                </div>
+                <div class="human_or_ai d-flex justify-content-between">
+                    <%if(gameData.players[i].isAI){%>
+                        <h6>Computer (<%=gameData.players[i].difficulty%>)</h6>
+                    <%}else{%>
+                        <h6>Human</h6>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    <%}%>
+<%}%>

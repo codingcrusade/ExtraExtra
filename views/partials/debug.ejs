@@ -1,0 +1,36 @@
+<div class="accordion mb-3 col-12" id="newClaim">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button  style="background-color: white;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Debug
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#newClaim">
+        <div class="accordion-body">
+            <div class="row">
+                <div class="col-12">
+                    <form action="/game/<%=gameData._id%>/debugDealResearchLine" method="POST">                
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Discard the left-most Research Line card(s) and all their money, then deal this:</label>
+                            <input class="form-control" type="form-text" id="debugDealResearchLine" name="letter">
+                            <button type="submit" class="btn btn-success">Deal it</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <form action="/game/<%=gameData._id%>/debugChangeController" method="POST">                
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Change who controls this player (toggle Human or AI):</label>
+                            <input class="form-control" type="form-text" id="debugChangeController" name="player">
+                            <button type="submit" class="btn btn-success">Change it</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="d-flex col-12 justify-content-center">
+        <%for(var i = 0; i < gameData.players[gameData.activePlayer].hand.length; i++){%>
+            <a class="btn disabled" id="hand<%=i%>" name="hand<%=i%>" href="/game/<%=gameData._id%>/addLetter/hand<%=i%>" role="button">
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/w_100/v1621977606/ExtraExtra/Letters/<%=gameData.players[gameData.activePlayer].hand[i]%>.png"alt="">
+            </a>
+        <%}%>
+        <div class="mx-3">
+            <div class=""></div>
+            <div class=""></div>
+            <%if(gameData.fMoneySelected && !gameData.players[gameData.activePlayer].isAI){%>
+                <div class="d-flex row">
+                    <a class="" id="submitF" name="submitF" href="/game/<%=gameData._id%>/confirmF" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625335533/ExtraExtra/Characters/Confirm_gzvsae.png" alt="">
+                    </a>
+                </div>
+                <br>
+                <div class="d-flex row">
+                    <a class="" id="cancel" name="cancel" href="/game/<%=gameData._id%>/undoF" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625363455/ExtraExtra/Characters/Cancel_wmb1uh.png" alt="">
+                    </a>
+                </div>
+            <%}%>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+
+    </div>
+</div>
+<br>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="d-flex col-12 justify-content-center">
+        <%for(var i = 0; i < gameData.players[gameData.activePlayer].hand.length; i++){%>
+            <a class="btn <%if(gameData.selectedFromHand[i]){%>btn-secondary<%}else{%>disabled<%}%>"
+                id="hand<%=i%>" name="hand<%=i%>" href="/game/<%=gameData._id%>/addLetter/hand<%=i%>" role="button">
+                <% if(gameData.currentWordReference.includes(`hand${i}`)) {%>
+                    <img src="https://res.cloudinary.com/djcc248bk/image/upload/w_100/v1621898941/ExtraExtra/Blank_wn1diu.png"alt="using">
+                <%} else {%>
+                    <img src="<%- include('../../partials/imageBase')%><%=gameData.players[gameData.spellingPlayer].hand[i]%>.png"alt="">
+                <%}%>
+            </a>
+        <%}%>
+        <div class="mx-3">
+            <div class=""></div>
+            <div class=""></div>
+            <%if((gameData.currentWord.length >= 3) && gameData.allowedToSubmit && !gameData.players[gameData.activePlayer].isAI){%>
+                <div class="d-flex row">
+                    <a class="" id="submitSpelling" name="submitSpelling" href="/game/<%=gameData._id%>/submitSpelling" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625335533/ExtraExtra/Characters/Confirm_gzvsae.png" alt="">
+                    </a>
+                </div>
+            <br>
+            <%}%>
+            <%if(!gameData.players[gameData.activePlayer].isAI){%>
+                <div class="d-flex row">
+                    <a class="<%if(!((gameData.currentWord.length >= 3) && gameData.allowedToSubmit && !gameData.players[gameData.activePlayer].isAI)){%>mt-5<%}%>" id="skipTurn" name="skipTurn" href="/game/<%=gameData._id%>/skipTurn" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625433441/ExtraExtra/Characters/Skip_Turn_rfbnm6.png" alt="">
+                    </a>
+                </div>
+            <%}%>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+
+    </div>
+</div>
+<br>

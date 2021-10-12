@@ -1,0 +1,72 @@
+<br>
+<div class="d-flex justify-content-center">
+    <div class="">
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 0)){%> disabled <%}%>" id="wordOne" name="wordOne" href="/game/<%=gameData._id%>/addLetter/0" role="button">
+            <% if(gameData.currentWord.length > 0) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[0]%>.png"alt="">
+            <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/0c_ejkw76.png">
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 1)){%> disabled <%}%>" id="wordTwo" name="wordTwo" href="/game/<%=gameData._id%>/addLetter/1" role="button">
+            <% if(gameData.currentWord.length > 1) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[1]%>.png"alt="">
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/0c_ejkw76.png" alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 2)){%> disabled <%}%>" id="wordThree" name="wordThree" href="/game/<%=gameData._id%>/addLetter/2" role="button">
+            <% if(gameData.currentWord.length > 2) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[2]%>.png"alt="">
+
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/3c_hxufax.png"alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 3)){%> disabled <%}%>" id="wordFour" name="wordFour" href="/game/<%=gameData._id%>/addLetter/3" role="button">
+            <% if(gameData.currentWord.length > 3) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[3]%>.png"alt="">
+
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/4c_d55qrc.png" alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 4)){%> disabled <%}%>" id="wordFive" name="wordFive" href="/game/<%=gameData._id%>/addLetter/4" role="button">
+            <% if(gameData.currentWord.length > 4) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[4]%>.png"alt="">
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/7c_torvu4.png" alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 5)){%> disabled <%}%>" id="wordSix" name="wordSix" href="/game/<%=gameData._id%>/addLetter/5" role="button">
+            <% if(gameData.currentWord.length > 5) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[5]%>.png"alt="">
+
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/10c_pjrylu.png" alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 6)){%> disabled <%}%>" id="wordSeven" name="wordSeven" href="/game/<%=gameData._id%>/addLetter/6" role="button">
+            <% if(gameData.currentWord.length > 6) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[6]%>.png"alt="">
+
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/15c_qqilfz.png" alt="">
+
+            <%}%>
+        </a>
+        <a class="btn btn-outline-secondary <%if(!(gameData.currentWord.length > 7)){%> disabled <%}%>" id="wordEight" name="wordEight" href="/game/<%=gameData._id%>/addLetter/7" role="button">
+            <% if(gameData.currentWord.length > 7) {%>
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.currentWord[7]%>.png"alt="">
+             <%} else {%>
+                <img src="https://res.cloudinary.com/djcc248bk/image/upload/h_140,w_100/v1621902589/ExtraExtra/30c_p4eota.png" alt="">
+
+            <%}%>
+        </a>
+    </div>
+</div>

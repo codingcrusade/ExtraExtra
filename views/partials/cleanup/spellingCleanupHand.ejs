@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+    <div class="d-flex col-12 justify-content-center">
+        <%for(var i = 0; i < gameData.players[gameData.activePlayer].hand.length; i++){%>
+            <a class="btn disabled <%if(gameData.currentWordReference.includes(`hand${i}`)){%>btn-secondary<%}else{%><%}%>"
+                id="hand<%=i%>" name="hand<%=i%>" href="/game/<%=gameData._id%>/addLetter/hand<%=i%>" role="button">
+                <% if(gameData.currentWordReference.includes(`hand${i}`)) {%>
+                    <img src="https://res.cloudinary.com/djcc248bk/image/upload/w_100/v1621898941/ExtraExtra/Blank_wn1diu.png"alt="">
+                <%} else {%>
+                    <img src="<%- include('../../partials/imageBase')%><%=gameData.players[gameData.spellingPlayer].hand[i]%>.png"alt="">
+                <%}%>
+            </a>
+        <%}%>
+        <div class="mx-3">
+            <%if(!gameData.players[gameData.activePlayer].isAI){%>
+                <div class="d-flex row">
+                    <a class="mt-5" id="submitSpelling" name="submitSpelling" href="/game/<%=gameData._id%>/cleanUpPhase" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625433433/ExtraExtra/Characters/Pay_and_End_r9ceht.png" alt="">
+                    </a>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+<br>

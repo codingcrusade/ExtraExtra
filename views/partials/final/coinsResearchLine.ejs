@@ -1,0 +1,170 @@
+<%for(var x = 0; x < gameData.players.length; x++){%>
+    <%
+        //1-left 2-top 3-right 0-me
+        var location = x;
+        var playerNumber = -1;
+
+        //logic to let them sit across from each other in a 2-player game
+        if((gameData.players.length == 2) && (location == 1)){
+            location = 2;
+            playerNumber = gameData.activePlayer + 1;
+        } else {
+            //logic for 3-4 player game, rotate bets clockwise around the card
+            if(location == 1){
+                playerNumber = gameData.activePlayer + 1;
+            } else if(location == 2){
+                playerNumber = gameData.activePlayer + 2;
+            } else if(location == 3){
+                playerNumber = gameData.activePlayer + 3;
+            } else if(location == 0){
+                playerNumber = gameData.activePlayer;
+            }
+        }
+        if(playerNumber >= gameData.players.length){
+            playerNumber -= gameData.players.length;
+        }
+        var money = gameData.newResearchLine[j].bets[playerNumber];
+        var dimes = 0;
+        var nickles = 0;
+        var pennies = 0;
+        dimes = Math.floor(money / 10);
+        var remainder = money % 10;
+        nickles = Math.floor(remainder / 5);
+        remainder = remainder % 5;
+        pennies = remainder;
+        const stackDistance = 4;
+        var totalNumberOfCoins = dimes + nickles + pennies;
+        var SHOW_NUMBER = true;
+        var numberSkewRight = 0;
+        var sumTotal = (dimes*10) + (nickles * 5) + (pennies * 1);
+        if(sumTotal > 1){
+            numberSkewRight+=2;
+        }
+        if(sumTotal >= 10){
+            numberSkewRight+=3;
+        }
+    %>
+    <div class="" style="
+        position: relative;
+        <%if(location == 1){%>
+        top: <%=(60-(totalNumberOfCoins * stackDistance))%>px;
+        right: 7px;
+        <%}%>
+        <%if(location == 2){%>
+        top: <%=(-3-(totalNumberOfCoins * stackDistance))%>px;
+        right: -44px;
+        <%}%>
+        <%if(location == 3){%>
+        top: <%=(60-(totalNumberOfCoins * stackDistance))%>px;
+        right: -92px;
+        <%}%>
+        <%if(location == 0){%>
+        top: <%=(130-(totalNumberOfCoins * stackDistance / 2))%>px;
+        right: -44px;
+        <%}%>
+    ">
+        <%if(!(gameData.newResearchLine[j].stackSize == 0)){%>
+            <div class="" style="position: relative;">
+                <%for(var i = (dimes + nickles + pennies); i > (dimes + nickles); i--){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*(i-1)%>px;
+                    z-index: 11;">
+                        <img src="<%- include('../../partials/coinImageBase')%>penny.png" alt="">
+                    </div>
+                <%}%>
+                <%for(var i = dimes; i < (dimes + nickles); i++){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*i%>px;
+                    z-index: 11;">
+                        <img src="<%- include('../../partials/coinImageBase')%>nickle.png" alt="">
+                    </div>
+                <%}%>
+                <%for(var i = 0; i < dimes; i++){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*i%>px;
+                    z-index: 11;">
+                        <img src="<%- include('../../partials/coinImageBase')%>dime.png" alt="">
+                    </div>
+                <%}%>
+                <%if((totalNumberOfCoins > 0) && SHOW_NUMBER) {%>
+                    <h6 class="" style="
+                    position: absolute;
+                    right: <%=(104 - numberSkewRight)%>px;
+                    top: <%=(9)%>px;
+                    z-index: 11;">
+                        <%=sumTotal%>
+                    </h6>
+                <%}%>
+                    
+            </div>
+        <%}%>
+    </div>
+    <%
+    money = gameData.newResearchLine[j].ledger;
+    dimes = 0;
+    nickles = 0;
+    pennies = 0;
+    dimes = Math.floor(money / 10);
+    remainder = money % 10;
+    nickles = Math.floor(remainder / 5);
+    remainder = remainder % 5;
+    pennies = remainder;
+    totalNumberOfCoins = dimes + nickles + pennies;
+    numberSkewRight = 0;
+    var numberSkewUp = 0;
+    sumTotal = (dimes*10) + (nickles * 5) + (pennies * 1);
+    if(sumTotal > 1){
+        numberSkewRight+=2;
+    }
+    if(sumTotal >= 10){
+        numberSkewRight+=3;
+        numberSkewUp+=4;
+    }
+    %>
+    <div class="" style="
+        position: relative;
+        top: <%=(83-(totalNumberOfCoins * stackDistance / 2))%>px;
+        right: <%=(-44)%>px;
+    ">
+        <%if(!gameData.currentWordReference.includes(`researchLine${j}`)){%>
+            <div class="" style="position: relative;">
+                <%for(var i = (dimes + nickles + pennies); i > (dimes + nickles); i--){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*(i-1)%>px;
+                    z-index: 10;">
+                        <img src="<%- include('../../partials/coinImageBase')%>penny.png" alt="">
+                    </div>
+                <%}%>
+                <%for(var i = dimes; i < (dimes + nickles); i++){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*i%>px;
+                    z-index: 10;">
+                        <img src="<%- include('../../partials/coinImageBase')%>nickle.png" alt="">
+                    </div>
+                <%}%>
+                <%for(var i = (dimes + nickles); i > nickles; i--){%>
+                    <div class="" style="
+                    position: absolute;
+                    top: <%=stackDistance*(i-1)%>px;
+                    z-index: 10;">
+                        <img src="<%- include('../../partials/coinImageBase')%>dime.png" alt="">
+                    </div>
+                <%}%>
+                <%if((totalNumberOfCoins > 0) && SHOW_NUMBER) {%>
+                    <h6 class="" style="
+                    position: absolute;
+                    right: <%=(104 - numberSkewRight)%>px;
+                    top: <%=(9 + (numberSkewUp))%>px;
+                    z-index: 10;">
+                        <%=sumTotal%>
+                    </h6>
+                <%}%>
+            </div>
+        <%}%>
+    </div>
+<%}%>

@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="d-flex col-12 justify-content-center">
+        <%for(var i = 0; i < gameData.players[gameData.activePlayer].hand.length; i++){%>
+            <a class="btn <%if(gameData.discardFromHand[i]){%>btn-secondary<%}else{%><%}%>"
+                id="hand<%=i%>" name="hand<%=i%>" href="/game/<%=gameData._id%>/discardFromHand/<%=i%>" role="button">
+                <img src="<%- include('../../partials/imageBase')%><%=gameData.players[gameData.activePlayer].hand[i]%>.png"alt="">
+            </a>
+        <%}%>
+        <div class="mx-3">
+            <div class=""></div>
+            <div class=""></div>
+            <%if((gameData.selectedToDiscard == gameData.mDealtToResearchLine) && !gameData.players[gameData.activePlayer].isAI && (gameData.selectedToDiscard > 0)){%>
+                <div class="d-flex row">
+                    <a class="" id="submitDiscard" name="submitDiscard" href="/game/<%=gameData._id%>/confirmDiscard" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625335533/ExtraExtra/Characters/Confirm_gzvsae.png" alt="">
+                    </a>
+                </div>
+            <br>
+            <%}%>
+            <%if(!gameData.players[gameData.activePlayer].isAI && (gameData.selectedToDiscard > 0)){%>
+                <div class="d-flex row">
+                    <a class="<%if((gameData.selectedToDiscard != gameData.mDealtToResearchLine) && !gameData.players[gameData.activePlayer].isAI){%>mt-5<%}%>" id="cancel" name="cancel" href="/game/<%=gameData._id%>/undoDiscard" role="button">
+                        <img src="https://res.cloudinary.com/djcc248bk/image/upload/c_scale,w_200/v1625363455/ExtraExtra/Characters/Cancel_wmb1uh.png" alt="">
+                    </a>
+                </div>
+            <%}%>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+
+    </div>
+</div>
+<br>

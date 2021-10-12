@@ -1,0 +1,26 @@
+<div class="" style="position: relative;">
+    <%for(var i = 0; i < gameData.dimes; i++){%>
+        <div class="" style="
+        position: absolute;
+        top: <%=10*i%>px;
+        z-index: 11;">
+            <img src="<%- include('../../partials/coinImageBase')%>dime.png" alt="">
+        </div>
+    <%}%>
+    <%for(var i = gameData.dimes; i < (gameData.dimes + gameData.nickles); i++){%>
+        <div class="" style="
+        position: absolute;
+        top: <%=10*i%>px;
+        z-index: 11;">
+            <img src="<%- include('../../partials/coinImageBase')%>nickle.png" alt="">
+        </div>
+    <%}%>
+    <%for(var i = (gameData.dimes + gameData.nickles); i < (gameData.dimes + gameData.nickles + gameData.pennies); i++){%>
+        <div class="" style="
+        position: absolute;
+        top: <%=10*i%>px;
+        z-index: 11;">
+            <img src="<%- include('../../partials/coinImageBase')%>penny.png" alt="">
+        </div>
+    <%}%>
+</div>
